@@ -5,7 +5,7 @@ import ParticleBg from './ParticleBg';
 
 const Portfolio = () => {
     const [isPlaying, setIsPlaying] = useState(false)
-    const [audio] = useState(typeof Audio !== 'undefined' ? new Audio(`${import.meta.env.BASE_URL}background-music.mp3`)
+    const [audio] = useState(typeof Audio !== 'undefined' ? new Audio('/background-music.mp3')
     : null)
 
     const toggleMusic = useCallback(() => {
@@ -40,7 +40,7 @@ const Portfolio = () => {
             </p>
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden mb-8 border-4 border-blue-500">
                 <img
-                  src={`${import.meta.env.BASE_URL}1670778086074.jpeg`}
+                  src="/1670778086074.jpeg"
                   alt="Profile"
                   className="w-full h-full object-cover"
                   />
