@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-// import { github, linkedin, twitter } from "lucide-react";
-// import  Button  from './Button';
+import { Github, Linkedin, Twitter, ArrowDownToLine } from "lucide-react";
+import  Button  from './Button';
 import ParticleBg from './ParticleBg';
 
 const Portfolio = () => {
@@ -52,10 +52,10 @@ const Portfolio = () => {
             </h2>
 
             <div className="flex flex-col gap-4">
-                {/* <Button href="#" icon={linkedin}>LinkedIn</Button>
-                {/* <Button href="#" icon={download}>CV</Button> */}
-                {/* <Button href="#" icon={github}>Github</Button>
-                <Button href="#" icon={twitter}>X</Button> */} 
+                <Button href="https://www.linkedin.com/in/gordon-gichini/" icon={Linkedin}>LinkedIn</Button>
+                <Button href="/resume.pdf" icon={ArrowDownToLine}>Resume</Button>
+                <Button href="https://github.com/GordonGichini" icon={Github}>Github</Button>
+                <Button href="https://x.com/GichiniGordon" icon={Twitter}>X</Button> 
             </div>
         </div>
 
