@@ -4,7 +4,7 @@ import React from 'react'
   return (
     <a
       href={href}
-      className="inline-flex w-fit items-center justify-center gap-2 px-3 py-2 bg-primary text-white font-kaushan rounded-md hover:bg-blue-700 hover:animate-none transition-all duration-300 animate-danceUpSideways"
+      className="inline-flex w-fit items-center justify-center gap-2 px-5 py-3 bg-primary text-white font-kaushan rounded-md hover:bg-blue-700 hover:animate-none transition-all duration-300 animate-danceUpSideways"
       target="_blank"
       rel="noopener noreferrer"
     >
