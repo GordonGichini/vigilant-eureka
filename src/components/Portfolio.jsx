@@ -35,7 +35,7 @@ const Portfolio = () => {
     <div className="relative min-h-screen bg-background text-white" onClick={toggleMusic}>
         <ParticleBg />
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 text-center">
-            <p className="text-lg mb-8 italic">
+            <p className="text-lg mb-2 mt--2 font-kaushan">
                 Click anywhere to {isPlaying ? 'stop' : 'start'} the background music
             </p>
             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden mb-6">
@@ -52,7 +52,7 @@ const Portfolio = () => {
                 Laravel Backend Software Developer
             </h2>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col items-center justify-center gap-4">
                 <Button href="https://www.linkedin.com/in/gordon-gichini/">LinkedIn</Button>
                 <Button href="/resume.pdf">CV</Button>
                 <Button href="https://github.com/GordonGichini">Github</Button>
