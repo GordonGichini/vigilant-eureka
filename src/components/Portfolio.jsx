@@ -46,10 +46,10 @@ const Portfolio = () => {
                   className="w-full h-full object-cover"
                   />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-blue-500">
+            <h1 className="text-4xl md:text-5xl font-kaushan mb-4 text-primary text-center">
                 Eng. Gordon Gichini
             </h1>
-            <h2 className="text-2xl md:text-3xl mb-12 text-blue-300 italic">
+            <h2 className="text-4xl md:text-3xl mb-12 font-kaushan text-primary">
                 Software Developer
             </h2>
 

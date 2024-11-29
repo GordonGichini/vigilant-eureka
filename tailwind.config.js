@@ -6,6 +6,14 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        kaushan: ['"Kaushan Script"', 'cursive'],
+      },
+      colors: {
+        primary: '#007bff',
+        heading: '#333',
+        background: 'rgb(186, 185, 191)',
+      },
       keyframes: {
         danceUpSideways: {
           '0%, 100%': { transform: 'translate(0, 0)' },
