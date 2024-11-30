@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1, h2 {
+        @apply text-[2.5rem] font-bold text-center text-[#333] mb-[10px];
+    }
+}
