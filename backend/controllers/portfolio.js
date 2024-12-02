@@ -1,4 +1,4 @@
-const portfolio = require('../services/portfolio');
+const portfolio = require('../services/portfolioService');
 
 
 const createPortfolio = async (req, res) => {

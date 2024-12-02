@@ -18,9 +18,9 @@ const createPortfolio = async (userId, portfolioData, files) => {
   const { name, title, linkedInUrl, githubUrl, xUrl } = portfolioData;
 
   // Upload files to Cloudinary
-  const cvUrl = files.cv ? await uploadFileToCloudinary(files.cv[0], 'portfolios/cv') : null;
-  const imageUrl = files.image ? await uploadFileToCloudinary(files.image[0], 'portfolios/images') : null;
-  const musicUrl = files.music ? await uploadFileToCloudinary(files.music[0], 'portfolios/music') : null;
+  const cv = files.cv ? await uploadFileToCloudinary(files.cv[0], 'portfolios/cv') : null;
+  const image = files.image ? await uploadFileToCloudinary(files.image[0], 'portfolios/images') : null;
+  const music = files.music ? await uploadFileToCloudinary(files.music[0], 'portfolios/music') : null;
 
   // Create Portfolio record
   const portfolio = await Portfolio.create({

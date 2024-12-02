@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize');
+const sequelize = require('../config/database');
 const User = require('./User');
 const Portfolio = require('./Portfolio');
 
@@ -10,4 +12,4 @@ Portfolio.belongsTo(User, {
   foreignKey: 'userId',
 });
 
-module.exports = { User, Portfolio };
+module.exports = { sequelize, User, Portfolio };
