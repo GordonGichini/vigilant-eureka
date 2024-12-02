@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const User = require('./User');
 
 const Portfolio = sequelize.define('Portfolio', {
   name: {
@@ -13,31 +12,32 @@ const Portfolio = sequelize.define('Portfolio', {
   },
   linkedInUrl: {
     type: DataTypes.STRING,
+    allowNull: true,
     validate: { isUrl: true },
   },
   githubUrl: {
     type: DataTypes.STRING,
+    allowNull: true,
     validate: { isUrl: true },
   },
   xUrl: {
     type: DataTypes.STRING,
+    allowNull: true,
     validate: { isUrl: true },
   },
-  cvUrl: {
+  cv: {
     type: DataTypes.STRING, // Will store the Cloudinary URL
     allowNull: true,
   },
-  imageUrl: {
+  image: {
     type: DataTypes.STRING, // Will store the Cloudinary URL
     allowNull: true,
   },
-  musicUrl: {
+  music: {
     type: DataTypes.STRING, // Will store the Cloudinary URL
     allowNull: true,
   },
 });
 
-// Define relationship
-Portfolio.belongsTo(User, { foreignKey: 'userId' });
 
 module.exports = Portfolio;
