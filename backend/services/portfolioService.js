@@ -1,60 +1,48 @@
-const Portfolio = require('../models/Portfolio');
 const { Portfolio, User } = require('../models');
-const cloudinary = require('../config/cloudinary');
 
-const uploadFileToCloudinary = async (file, folder) => {
+
+const createPortfolio = async (userId, portfolioData, files) => {
   try {
-    const result = await cloudinary.uploader.upload(file.path, {
-      folder,
-      resource_type: file.mimetype.startsWith('audio') ? 'video' : 'image',
+    const { name, title, linkedInUrl, githubUrl, xUrl } = portfolioData;
+
+    // Construct local file URLs
+    const cvUrl = files.cv ? `http://localhost:5000/uploads/${files.cv[0].filename}` : null;
+    const imageUrl = files.image ? `http://localhost:5000/uploads/${files.image[0].filename}` : null;
+    const musicUrl = files.music ? `http://localhost:5000/uploads/${files.music[0].filename}` : null;
+
+    // Save portfolio data to the database
+    const portfolio = await Portfolio.create({
+      name,
+      title,
+      linkedInUrl,
+      githubUrl,
+      xUrl,
+      cvUrl,
+      imageUrl,
+      musicUrl,
+      userId,
     });
-    return result.secure_url;
+
+    return portfolio;
   } catch (error) {
-    throw new Error('File upload failed: ' + error.message);
+    console.error('Error in createPortfolio:', error.message);
+    throw new Error('Portfolio creation failed');
   }
 };
 
-const createPortfolio = async (userId, portfolioData, files) => {
-  const { name, title, linkedInUrl, githubUrl, xUrl } = portfolioData;
-
-  // Upload files to Cloudinary
-  const cv = files.cv ? await uploadFileToCloudinary(files.cv[0], 'portfolios/cv') : null;
-  const image = files.image ? await uploadFileToCloudinary(files.image[0], 'portfolios/images') : null;
-  const music = files.music ? await uploadFileToCloudinary(files.music[0], 'portfolios/music') : null;
-
-  // Create Portfolio record
-  const portfolio = await Portfolio.create({
-    name,
-    title,
-    linkedInUrl,
-    githubUrl,
-    xUrl,
-    cv,
-    image,
-    music,
-    userId,
-  });
-
-  return portfolio;
-};
-
 // Fetch a portfolio by ID
-const getPortfolioById = async (id) => {
-    // Fetch the portfolio along with associated user
-    const portfolio = await Portfolio.findOne({
-      where: { id },
-      include: {
-        model: User,
-        attributes: ['email'], // Fetch relevant user details
-      },
-    });
-  
+const getPortfolioById = async (portfolioId) => {
+  try {
+    const portfolio = await Portfolio.findByPk(portfolioId);
     if (!portfolio) {
       throw new Error('Portfolio not found');
     }
-  
     return portfolio;
-  };
+  } catch (error) {
+    console.error('Error in getPortfolioById:', error.message);
+    throw new Error('Error fetching portfolio');
+  }
+};
 
 module.exports = {
   createPortfolio,

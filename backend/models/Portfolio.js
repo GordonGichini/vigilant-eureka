@@ -2,6 +2,11 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 const Portfolio = sequelize.define('Portfolio', {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4, // Automatically generate UUID
+    primaryKey: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -25,19 +30,24 @@ const Portfolio = sequelize.define('Portfolio', {
     allowNull: true,
     validate: { isUrl: true },
   },
-  cv: {
-    type: DataTypes.STRING, // Will store the Cloudinary URL
+  cvPath: {
+    type: DataTypes.STRING, // Will store the local file path
     allowNull: true,
   },
-  image: {
-    type: DataTypes.STRING, // Will store the Cloudinary URL
+  imagePath: {
+    type: DataTypes.STRING, // Will store the local file path
     allowNull: true,
   },
-  music: {
-    type: DataTypes.STRING, // Will store the Cloudinary URL
+  musicPath: {
+    type: DataTypes.STRING, // Will store the local file path
     allowNull: true,
   },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false,
+  },
+}, {
+  timestamps: true, // Adds createdAt and updatedAt fields
 });
-
 
 module.exports = Portfolio;

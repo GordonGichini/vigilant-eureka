@@ -1,16 +1,12 @@
 const express = require('express');
-const multer = require('multer');
-const { createPortfolio } = require('../controllers/portfolio');
+const upload = require('../config/multerConfig'); // Updated multer config
+const { createPortfolio, getPortfolioById } = require('../controllers/portfolio');
 const authenticateToken = require('../middlewares/authenticateToken'); // JWT middleware
 
 const router = express.Router();
 
-// Configure Multer
-const storage = multer.diskStorage({});
-const upload = multer({ storage });
-
 router.post(
-  '/portfolio',
+  '/create',
   authenticateToken,
   upload.fields([
     { name: 'cv', maxCount: 1 },
@@ -19,5 +15,7 @@ router.post(
   ]),
   createPortfolio
 );
+
+router.get('/portfolio/:id', authenticateToken, getPortfolioById);
 
 module.exports = router;
