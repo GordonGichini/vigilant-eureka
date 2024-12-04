@@ -4,7 +4,7 @@ const sequelize = require('../config/database');
 const Portfolio = sequelize.define('Portfolio', {
   id: {
     type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4, // Automatically generate UUID
+    defaultValue: DataTypes.UUIDV4, 
     primaryKey: true,
   },
   name: {
@@ -45,6 +45,10 @@ const Portfolio = sequelize.define('Portfolio', {
   userId: {
     type: DataTypes.UUID,
     allowNull: false,
+    references: {
+      model: 'Users',
+      key: 'id',
+    },
   },
 }, {
   timestamps: true, // Adds createdAt and updatedAt fields
